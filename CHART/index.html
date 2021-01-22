@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+　<title>折れ線グラフの練習</title> 
+</head>
+<body>
+  <h1>折れ線グラフの練習</h1>
+  <canvas id="myLineChart"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+  <script>
+  var ctx = document.getElementById("myLineChart");
+  var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['1月1日', '1月2日', '1月3日', '1月4日', '1月5日', '1月6日', '1月7日'],
+      datasets: [
+        {
+          label: '最高気温(度）',
+          data: [10, 12, 8, 2, 3, 11, 16],
+          borderColor: "rgba(255,0,0,1)",
+          backgroundColor: "rgba(0,0,0,0)"
+        },
+        {
+          label: '最低気温(度）',
+          data: [-1, -5, 3, 0, -10, 3,-12],
+          borderColor: "rgba(0,0,255,1)",
+          backgroundColor: "rgba(0,0,0,0)"
+        }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: '気温（1月1日~1月7日）'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMax: 40,
+            suggestedMin: 0,
+            stepSize: 10,
+            callback: function(value, index, values){
+              return  value +  '度'
+            }
+          }
+        }]
+      },
+    }
+  });
+  </script>
+</body>
+
+</html> 
